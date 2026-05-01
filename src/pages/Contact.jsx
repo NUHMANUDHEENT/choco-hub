@@ -45,7 +45,7 @@ const Contact = () => {
                         </div>
 
                         <div className="mt-10">
-                            <a href="https://wa.me/12345678900" target="_blank" rel="noreferrer">
+                            <a href="https://wa.me/+919497629260" target="_blank" rel="noreferrer">
                                 <Button variant="primary" size="lg" className="w-full sm:w-auto bg-[#25D366] text-white border-[#25D366] hover:bg-[#20bd5a]">
                                     <MessageSquare size={20} /> Chat with us on WhatsApp
                                 </Button>

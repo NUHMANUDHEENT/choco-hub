@@ -20,7 +20,7 @@ const Home = () => {
                 <div
                     className="absolute top-0 right-0 w-full lg:w-2/3 h-full z-0 opacity-20 lg:opacity-100"
                     style={{
-                        backgroundImage: 'url(/src/assets/home.png)',
+                        backgroundImage: 'url(https://www.extensiv.com/hubfs/AdobeStock_181658575.jpeg)',
                         backgroundSize: 'cover',
                         backgroundPosition: 'center right',
                         maskImage: 'linear-gradient(to right, transparent, black 50%)',
