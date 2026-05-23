@@ -1,11 +1,56 @@
-import React, { useEffect } from 'react';
-import { MapPin, Phone, Mail, MessageSquare } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { MapPin, Phone, Mail, MessageSquare, Send, CheckCircle2, Loader2 } from 'lucide-react';
 import Button from '../components/UI/Button';
 
 const Contact = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
+    });
+    const [status, setStatus] = useState({ loading: false, submitted: false, error: null });
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
+    const handleChange = (e) => {
+        const { id, value } = e.target;
+        setFormData(prev => ({ ...prev, [id]: value }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus({ loading: true, submitted: false, error: null });
+
+        // Replace this URL with your Google Apps Script Web App URL
+        const SCRIPT_URL = "YOUR_GOOGLE_SCRIPT_WEB_APP_URL";
+
+        try {
+            // If URL is not set, simulate success for demo purposes
+            if (SCRIPT_URL === "YOUR_GOOGLE_SCRIPT_WEB_APP_URL") {
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                setStatus({ loading: false, submitted: true, error: null });
+                return;
+            }
+
+            const response = await fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+
+            setStatus({ loading: false, submitted: true, error: null });
+            setFormData({ name: '', email: '', phone: '', message: '' });
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            setStatus({ loading: false, submitted: false, error: 'Something went wrong. Please try again later.' });
+        }
+    };
 
     return (
         <div className="animate-fade-in bg-[#fdfbf7]">
@@ -27,7 +72,7 @@ const Contact = () => {
 
                         <div className="flex flex-col gap-6">
                             {[
-                                { icon: <Phone size={24} />, title: 'Phone', desc: '+1 (234) 567-8900', hint: 'Mon-Fri from 8am to 6pm.' },
+                                { icon: <Phone size={24} />, title: 'Phone', desc: '+91 9497629260', hint: 'Mon-Fri from 8am to 6pm.' },
                                 { icon: <Mail size={24} />, title: 'Email', desc: 'supply@chocohub.com', hint: 'We respond within 24 hours.' },
                                 { icon: <MapPin size={24} />, title: 'Warehouse Center', desc: '123 Wholesale Market, City Name, 12345', hint: '' }
                             ].map((item, i) => (
@@ -54,33 +99,101 @@ const Contact = () => {
                     </div>
 
                     {/* Simple Inquiry Form */}
-                    <div className="bg-white p-10 py-12 rounded-2xl border border-[#e6ded8] shadow-sm">
-                        <h3 className="text-2xl font-bold text-[#3e2615] mb-8">Send an Inquiry</h3>
-                        <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
-                            <div className="flex flex-col gap-2">
-                                <label htmlFor="name" className="font-medium text-[#2b1f17] text-sm">Shop / Business Name</label>
-                                <input type="text" id="name" placeholder="Enter your business name" className="w-full p-3 border border-[#e6ded8] rounded-lg bg-white focus:outline-none focus:border-[#5c3a21] focus:ring-4 focus:ring-[#5c3a21]/10 transition-all font-sans text-base" required />
+                    <div className="bg-white p-10 py-12 rounded-2xl border border-[#e6ded8] shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden">
+                        {status.submitted ? (
+                            <div className="flex flex-col items-center justify-center py-12 text-center animate-in fade-in zoom-in duration-500">
+                                <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mb-6 text-green-600">
+                                    <CheckCircle2 size={48} />
+                                </div>
+                                <h3 className="text-3xl font-bold text-[#3e2615] mb-4">Inquiry Received!</h3>
+                                <p className="text-[#6e5c53] text-lg max-w-sm mb-8">
+                                    Thank you for reaching out. A wholesale specialist will contact you shortly.
+                                </p>
+                                <Button variant="outline" onClick={() => setStatus({ loading: false, submitted: false, error: null })}>
+                                    Send Another Message
+                                </Button>
                             </div>
+                        ) : (
+                            <>
+                                <h3 className="text-2xl font-bold text-[#3e2615] mb-8">Send an Inquiry</h3>
+                                <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
+                                    <div className="flex flex-col gap-2">
+                                        <label htmlFor="name" className="font-medium text-[#2b1f17] text-sm">Shop / Business Name</label>
+                                        <input
+                                            type="text"
+                                            id="name"
+                                            value={formData.name}
+                                            onChange={handleChange}
+                                            placeholder="Enter your business name"
+                                            className="w-full p-3 border border-[#e6ded8] rounded-lg bg-white focus:outline-none focus:border-[#5c3a21] focus:ring-4 focus:ring-[#5c3a21]/10 transition-all font-sans text-base"
+                                            required
+                                        />
+                                    </div>
 
-                            <div className="flex flex-col gap-2">
-                                <label htmlFor="email" className="font-medium text-[#2b1f17] text-sm">Email Address</label>
-                                <input type="email" id="email" placeholder="contact@yourshop.com" className="w-full p-3 border border-[#e6ded8] rounded-lg bg-white focus:outline-none focus:border-[#5c3a21] focus:ring-4 focus:ring-[#5c3a21]/10 transition-all font-sans text-base" required />
-                            </div>
+                                    <div className="flex flex-col gap-2">
+                                        <label htmlFor="email" className="font-medium text-[#2b1f17] text-sm">Email Address</label>
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            placeholder="contact@yourshop.com"
+                                            className="w-full p-3 border border-[#e6ded8] rounded-lg bg-white focus:outline-none focus:border-[#5c3a21] focus:ring-4 focus:ring-[#5c3a21]/10 transition-all font-sans text-base"
+                                            required
+                                        />
+                                    </div>
 
-                            <div className="flex flex-col gap-2">
-                                <label htmlFor="phone" className="font-medium text-[#2b1f17] text-sm">Phone Number</label>
-                                <input type="tel" id="phone" placeholder="+1 (234) 567-8900" className="w-full p-3 border border-[#e6ded8] rounded-lg bg-white focus:outline-none focus:border-[#5c3a21] focus:ring-4 focus:ring-[#5c3a21]/10 transition-all font-sans text-base" />
-                            </div>
+                                    <div className="flex flex-col gap-2">
+                                        <label htmlFor="phone" className="font-medium text-[#2b1f17] text-sm">Phone Number</label>
+                                        <input
+                                            type="tel"
+                                            id="phone"
+                                            value={formData.phone}
+                                            onChange={handleChange}
+                                            placeholder="+91 9497629260"
+                                            className="w-full p-3 border border-[#e6ded8] rounded-lg bg-white focus:outline-none focus:border-[#5c3a21] focus:ring-4 focus:ring-[#5c3a21]/10 transition-all font-sans text-base"
+                                        />
+                                    </div>
 
-                            <div className="flex flex-col gap-2">
-                                <label htmlFor="message" className="font-medium text-[#2b1f17] text-sm">How can we help?</label>
-                                <textarea id="message" rows="5" placeholder="Tell us about the products you are interested in..." className="w-full p-3 border border-[#e6ded8] rounded-lg bg-white focus:outline-none focus:border-[#5c3a21] focus:ring-4 focus:ring-[#5c3a21]/10 transition-all font-sans text-base" required></textarea>
-                            </div>
+                                    <div className="flex flex-col gap-2">
+                                        <label htmlFor="message" className="font-medium text-[#2b1f17] text-sm">How can we help?</label>
+                                        <textarea
+                                            id="message"
+                                            rows="5"
+                                            value={formData.message}
+                                            onChange={handleChange}
+                                            placeholder="Tell us about the products you are interested in..."
+                                            className="w-full p-3 border border-[#e6ded8] rounded-lg bg-white focus:outline-none focus:border-[#5c3a21] focus:ring-4 focus:ring-[#5c3a21]/10 transition-all font-sans text-base"
+                                            required
+                                        ></textarea>
+                                    </div>
 
-                            <Button variant="primary" type="submit" size="lg" className="w-full mt-4" onClick={() => alert('Thanks for your inquiry! This is a demo.')}>
-                                Send Message
-                            </Button>
-                        </form>
+                                    {status.error && (
+                                        <p className="text-red-500 text-sm bg-red-50 p-3 rounded-lg border border-red-100 italic">
+                                            {status.error}
+                                        </p>
+                                    )}
+
+                                    <Button
+                                        variant="primary"
+                                        type="submit"
+                                        size="lg"
+                                        className="w-full mt-4 h-14"
+                                        disabled={status.loading}
+                                    >
+                                        {status.loading ? (
+                                            <>
+                                                <Loader2 size={20} className="animate-spin" /> Sending...
+                                            </>
+                                        ) : (
+                                            <>
+                                                <Send size={18} /> Send Inquiry
+                                            </>
+                                        )}
+                                    </Button>
+                                </form>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>
@@ -89,3 +202,4 @@ const Contact = () => {
 };
 
 export default Contact;
+

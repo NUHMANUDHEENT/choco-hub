@@ -1,15 +1,37 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
-import { X, Trash2, ShoppingBag, Send } from 'lucide-react';
+import { X, Trash2, ShoppingBag, Send, Plus, Minus } from 'lucide-react';
 import { useRequestList } from '../../context/RequestListContext';
 import Button from './Button';
 
 const CartDrawer = ({ isOpen, onClose }) => {
-    const { requestItems, removeFromRequestList, clearList, totalItems } = useRequestList();
+    const { requestItems, removeFromRequestList, updateQuantity, clearList, totalItems, totalPrice } = useRequestList();
 
     if (!isOpen) return null;
 
-    const totalPrice = requestItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+    const handleWhatsAppCheckout = () => {
+        const phoneNumber = "+919497629260"; // Replace with company's WhatsApp number
+
+        let message = "🍫 *New Wholesale Inquiry from Choco-Hub*\n\n";
+        message += "I'm interested in the following products:\n";
+        message += "--------------------------------------\n";
+
+        requestItems.forEach((item, index) => {
+            message += `${index + 1}. *${item.name}*\n   Qty: ${item.quantity} | Total: ₹${(item.price * item.quantity).toFixed(2)}\n\n`;
+        });
+
+        message += "--------------------------------------\n";
+        message += `*Total Items:* ${totalItems}\n`;
+        message += `*Estimated Total:* ₹${totalPrice.toFixed(2)}\n\n`;
+        message += "Please let me know the bulk pricing and shipping details.";
+
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+
+        // Optional: clear list after sending
+        // clearList();
+        // onClose();
+    };
 
     return createPortal(
         <div className="fixed inset-0 z-[9999] overflow-hidden">
@@ -45,18 +67,33 @@ const CartDrawer = ({ isOpen, onClose }) => {
                                             <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                                         </div>
                                         <div className="flex-1 flex flex-col justify-between">
-                                            <div>
-                                                <h4 className="font-bold text-[#2b1f17] text-sm leading-tight mb-1">{item.name}</h4>
-                                                <p className="text-[#6e5c53] text-xs">Qty: {item.quantity}</p>
-                                            </div>
-                                            <div className="flex justify-between items-end">
-                                                <span className="font-bold text-[#5c3a21]">₹{(item.price * item.quantity).toFixed(2)}</span>
+                                            <div className="flex justify-between items-start gap-2">
+                                                <h4 className="font-bold text-[#2b1f17] text-sm leading-tight">{item.name}</h4>
                                                 <button
                                                     onClick={() => removeFromRequestList(item.id)}
-                                                    className="text-[#e07a5f] hover:text-red-700 p-1 transition-colors"
+                                                    className="text-gray-400 hover:text-[#e07a5f] p-1 transition-colors"
                                                 >
                                                     <Trash2 size={16} />
                                                 </button>
+                                            </div>
+
+                                            <div className="flex justify-between items-center mt-3">
+                                                <div className="flex items-center bg-[#fdfbf7] border border-[#e6ded8] rounded-lg">
+                                                    <button
+                                                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                                                        className="p-1 px-2 hover:bg-[#e6ded8] transition-colors rounded-l-lg"
+                                                    >
+                                                        <Minus size={14} />
+                                                    </button>
+                                                    <span className="px-3 text-sm font-bold text-[#3e2615]">{item.quantity}</span>
+                                                    <button
+                                                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                                                        className="p-1 px-2 hover:bg-[#e6ded8] transition-colors rounded-r-lg"
+                                                    >
+                                                        <Plus size={14} />
+                                                    </button>
+                                                </div>
+                                                <span className="font-black text-[#5c3a21]">₹{(item.price * item.quantity).toFixed(2)}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -71,13 +108,8 @@ const CartDrawer = ({ isOpen, onClose }) => {
                                 <span className="text-[#6e5c53] font-medium">Estimated Total</span>
                                 <span className="text-2xl font-black text-[#5c3a21]">₹{totalPrice.toFixed(2)}</span>
                             </div>
-                            <Button variant="primary" className="w-full py-4 text-lg" onClick={() => {
-                                // Logic for sending request could go here
-                                alert('Request inquiry submitted!');
-                                clearList();
-                                onClose();
-                            }}>
-                                <Send size={20} /> Send Inquiry Request
+                            <Button variant="primary" className="w-full py-4 text-lg bg-[#25D366] border-[#25D366] hover:bg-[#20bd5a]" onClick={handleWhatsAppCheckout}>
+                                <ShoppingBag size={20} className="mr-2" /> Send via WhatsApp
                             </Button>
                             <button
                                 onClick={clearList}
