@@ -15,7 +15,7 @@ const Home = () => {
     return (
         <div className="animate-fade-in">
             {/* Hero Section */}
-            <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-[#fdfbf7] py-20">
+            <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-[#fdfbf7] dark:bg-[#1a120b] py-20">
                 {/* Background Image with Gradient Mask */}
                 <div
                     className="absolute top-0 right-0 w-full lg:w-2/3 h-full z-0 opacity-20 lg:opacity-100"
@@ -30,10 +30,10 @@ const Home = () => {
 
                 <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
                     <div className="max-w-2xl animate-fade-in-center text-center lg:text-left">
-                        <h1 className="text-4xl md:text-6xl font-extrabold leading-tight text-[#2b1f17] mb-6">
+                        <h1 className="text-4xl md:text-6xl font-extrabold leading-tight text-[#2b1f17] dark:text-[#f7f4ef] mb-6">
                             Your Trusted Wholesale Partner for Chocolates, Toys & Fancy Items
                         </h1>
-                        <p className="text-lg md:text-xl text-[#6e5c53] mb-10 leading-relaxed max-w-lg mx-auto lg:mx-0">
+                        <p className="text-lg md:text-xl text-[#6e5c53] dark:text-[#d6ccc2] mb-10 leading-relaxed max-w-lg mx-auto lg:mx-0">
                             ChocoHub is the premier wholesale supplier dedicated to bridging the gap between quality products and retail success. Let us stock your shelves with items your customers love.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -49,11 +49,11 @@ const Home = () => {
             </section>
 
             {/* Categories Preview */}
-            <section className="py-20 bg-white">
+            <section className="py-20 bg-white dark:bg-[#23180d]">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="text-center mb-12">
-                        <h2 className="text-3xl font-bold text-[#5c3a21] mb-4">Our Categories</h2>
-                        <p className="text-lg text-[#6e5c53] max-w-2xl mx-auto">Discover a wide range of products tailored for your retail shop.</p>
+                        <h2 className="text-3xl font-bold text-[#5c3a21] dark:text-[#d4a373] mb-4">Our Categories</h2>
+                        <p className="text-lg text-[#6e5c53] dark:text-[#d6ccc2] max-w-2xl mx-auto">Discover a wide range of products tailored for your retail shop.</p>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
@@ -78,8 +78,8 @@ const Home = () => {
             <section className="py-20 pb-10">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="text-center mb-12">
-                        <h2 className="text-3xl font-bold text-[#5c3a21] mb-4">Why Choose ChocoHub?</h2>
-                        <p className="text-lg text-[#6e5c53] max-w-2xl mx-auto">We make wholesale supply seamless, reliable, and affordable.</p>
+                        <h2 className="text-3xl font-bold text-[#5c3a21] dark:text-[#d4a373] mb-4">Why Choose ChocoHub?</h2>
+                        <p className="text-lg text-[#6e5c53] dark:text-[#d6ccc2] max-w-2xl mx-auto">We make wholesale supply seamless, reliable, and affordable.</p>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -89,10 +89,10 @@ const Home = () => {
                             { icon: <Truck size={32} />, title: 'Fast Supply', desc: 'Efficient delivery networks that ensure your shelves are never empty.' },
                             { icon: <ShieldCheck size={32} />, title: 'Trusted Partner', desc: 'Years of experience serving countless local retail shops with reliability.' }
                         ].map((b, i) => (
-                            <div key={i} className="bg-white p-8 rounded-xl shadow-sm border border-[#e6ded8] hover:shadow-md hover:-translate-y-1 transition-all">
-                                <div className="mb-6 text-[#5c3a21] bg-[#f7f4ef] w-16 h-16 rounded-full flex items-center justify-center">{b.icon}</div>
-                                <h3 className="text-xl font-bold text-[#3e2615] mb-3">{b.title}</h3>
-                                <p className="text-[#6e5c53] text-sm leading-relaxed">{b.desc}</p>
+                            <div key={i} className="bg-white dark:bg-[#1a120b] p-8 rounded-xl shadow-sm border border-[#e6ded8] dark:border-[#3e2615] hover:shadow-md hover:-translate-y-1 transition-all">
+                                <div className="mb-6 text-[#5c3a21] dark:text-[#d4a373] bg-[#f7f4ef] dark:bg-[#2b1f17] w-16 h-16 rounded-full flex items-center justify-center">{b.icon}</div>
+                                <h3 className="text-xl font-bold text-[#3e2615] dark:text-[#f7f4ef] mb-3">{b.title}</h3>
+                                <p className="text-[#6e5c53] dark:text-[#d6ccc2] text-sm leading-relaxed">{b.desc}</p>
                             </div>
                         ))}
                     </div>
@@ -100,12 +100,12 @@ const Home = () => {
             </section>
 
             {/* Popular Products */}
-            <section className="py-20 bg-white">
+            <section className="py-20 bg-white dark:bg-[#23180d]">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
                         <div>
-                            <h2 className="text-3xl font-bold text-[#5c3a21] mb-2">Popular Products</h2>
-                            <p className="text-[#6e5c53]">Top choices from our current inventory.</p>
+                            <h2 className="text-3xl font-bold text-[#5c3a21] dark:text-[#d4a373] mb-2">Popular Products</h2>
+                            <p className="text-[#6e5c53] dark:text-[#d6ccc2]">Top choices from our current inventory.</p>
                         </div>
                         <Link to="/products">
                             <Button variant="outline">Browse Full Catalog</Button>

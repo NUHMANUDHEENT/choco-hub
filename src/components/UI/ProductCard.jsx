@@ -6,7 +6,7 @@ import Button from './Button';
 
 const ProductCard = ({ product, onAddToList }) => {
     return (
-        <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-[#e6ded8] flex flex-col h-full group">
+        <div className="bg-white dark:bg-[#23180d] rounded-2xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-[#e6ded8] dark:border-[#3e2615] flex flex-col h-full group">
             <Link to={`/products/${product.id}`} className="relative overflow-hidden aspect-[4/3] block">
                 <img
                     src={product.image || 'https://via.placeholder.com/400x300?text=No+Image'}
@@ -29,15 +29,16 @@ const ProductCard = ({ product, onAddToList }) => {
                 </div>
 
                 <Link to={`/products/${product.id}`}>
-                    <h3 className="text-xl font-bold text-[#2b1f17] mb-2 hover:text-[#5c3a21] transition-colors leading-snug">{product.name}</h3>
+                    <h3 className="text-xl font-bold text-[#2b1f17] dark:text-[#f7f4ef] mb-2 hover:text-[#5c3a21] dark:hover:text-[#d4a373] transition-colors leading-snug">{product.name}</h3>
                 </Link>
-                <p className="text-[#6e5c53] text-sm mb-6 flex-1 line-clamp-2">{product.description}</p>
+                <p className="text-[#6e5c53] dark:text-[#d6ccc2] text-sm mb-6 flex-1 line-clamp-2">{product.description}</p>
 
-                <div className="flex items-center justify-between mt-auto pt-4 border-t border-[#e6ded8]">
-                    <div className="text-lg font-bold text-[#5c3a21]">
+                <div className="flex items-center justify-between mt-auto pt-4 border-t border-[#e6ded8] dark:border-[#3e2615]">
+                    <div className="text-lg font-bold text-[#5c3a21] dark:text-[#d4a373]">
                         {product.price ? `₹${product.price}` : 'Contact for price'}
-                        {product.unit && <span className="text-sm font-normal text-[#6e5c53]"> / {product.unit}</span>}
+                        {product.unit && <span className="text-sm font-normal text-[#6e5c53] dark:text-[#d6ccc2]"> / {product.unit}</span>}
                     </div>
+
 
                     <Button
                         variant="outline"

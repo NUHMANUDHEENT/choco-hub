@@ -1,0 +1,240 @@
+export const candies = [
+    {
+        id: '39',
+        name: 'Americano Basil Drink',
+        category: 'Candies',
+        description: 'Americano basil drink.',
+        MRP: 99.00,
+        price: 60.00,
+        unit: 'piece',
+        inStock: true,
+        image: '/products/candies1.jpg'
+    },
+    {
+        id: '40',
+        name: 'Mr Fun',
+        category: 'Candies',
+        description: 'Mr Fun candy.',
+        MRP: 280.00,
+        price: 180.00,
+        unit: 'piece',
+        inStock: true,
+        image: '/products/candies2.jpg'
+    },
+    {
+        id: '41',
+        name: 'Americano Drinks',
+        category: 'Candies',
+        description: 'Americano drinks.',
+        MRP: 50.00,
+        price: 35.00,
+        unit: 'piece',
+        inStock: true,
+        image: '/products/candies3.jpg'
+    },
+    {
+        id: '42',
+        name: 'Mashmallow Jar',
+        category: 'Candies',
+        description: 'Mashmallow jar.',
+        MRP: 650.00,
+        price: 450.00,
+        unit: 'piece',
+        inStock: true,
+        image: '/products/candies4.jpg'
+    },
+    {
+        id: '43',
+        name: 'Fun Feedy',
+        category: 'Candies',
+        description: 'Fun Feedy candy.',
+        MRP: 360.00,
+        price: 230.00,
+        unit: 'piece',
+        inStock: true,
+        image: '/products/candies5.jpg'
+    },
+    {
+        id: '44',
+        name: 'Mr Bunny',
+        category: 'Candies',
+        description: 'Mr Bunny candy.',
+        MRP: 360.00,
+        price: 170.00,
+        unit: 'piece',
+        inStock: true,
+        image: '/products/candies6.jpg'
+    },
+    {
+        id: '45',
+        name: 'Lavina Gift Box 100',
+        category: 'Candies',
+        description: 'Lavina gift box 100.',
+        MRP: 100.00,
+        price: 75.00,
+        unit: 'piece',
+        inStock: true,
+        image: '/products/candies7.jpg'
+    },
+    {
+        id: '46',
+        name: 'Kitkat 20',
+        category: 'Candies',
+        description: 'Kitkat 20.',
+        MRP: 600.00,
+        price: 530.00,
+        unit: 'piece',
+        inStock: true,
+        image: '/products/candies8.jpg'
+    },
+    {
+        id: '47',
+        name: 'Alpenliebe Gold Jar',
+        category: 'Candies',
+        description: 'Alpenliebe gold jar.',
+        MRP: 220.00,
+        price: 180.00,
+        unit: 'piece',
+        inStock: true,
+        image: '/products/candies9.jpg'
+    },
+    {
+        id: '48',
+        name: 'Munch Max',
+        category: 'Candies',
+        description: 'Munch Max candy box.',
+        MRP: 20.00,
+        price: 430.00,
+        unit: 'box',
+        inStock: true,
+        image: '/products/candies10.jpg'
+    },
+    {
+        id: '49',
+        name: 'Mashmallow Pop',
+        category: 'Candies',
+        description: 'Mashmallow pop.',
+        MRP: 1440.00,
+        price: 680.00,
+        unit: 'piece',
+        inStock: true,
+        image: '/products/candies11.jpg'
+    },
+    {
+        id: '50',
+        name: 'Mashmallow Stick',
+        category: 'Candies',
+        description: 'Mashmallow stick.',
+        MRP: 480.00,
+        price: 280.00,
+        unit: 'piece',
+        inStock: true,
+        image: '/products/candies12.jpg'
+    },
+    {
+        id: '51',
+        name: 'Maxident',
+        category: 'Candies',
+        description: 'Maxident candy.',
+        MRP: 200.00,
+        price: 150.00,
+        unit: 'piece',
+        inStock: true,
+        image: '/products/candies13.jpg'
+    },
+    {
+        id: '52',
+        name: 'Top Up',
+        category: 'Candies',
+        description: 'Top Up candy.',
+        MRP: 300.00,
+        price: 220.00,
+        unit: 'piece',
+        inStock: true,
+        image: '/products/candies14.jpg'
+    },
+    {
+        id: '53',
+        name: 'Clap Clap',
+        category: 'Candies',
+        description: 'Clap Clap candy.',
+        MRP: 360.00,
+        price: 270.00,
+        unit: 'piece',
+        inStock: true,
+        image: '/products/candies15.jpg'
+    },
+    {
+        id: '54',
+        name: 'Magic Pops',
+        category: 'Candies',
+        description: 'Magic Pops candy.',
+        MRP: 400.00,
+        price: 220.00,
+        unit: 'piece',
+        inStock: true,
+        image: '/products/candies16.jpg'
+    },
+    {
+        id: '55',
+        name: 'Batook',
+        category: 'Candies',
+        description: 'Batook candy.',
+        price: 140.00,
+        unit: 'piece',
+        inStock: true,
+        image: '/products/candies17.jpg'
+    },
+    {
+        id: '56',
+        name: 'Orbit',
+        category: 'Candies',
+        description: 'Orbit candy.',
+        price: 130.00,
+        unit: 'piece',
+        inStock: true,
+        image: '/products/candies18.jpg'
+    },
+    {
+        id: '57',
+        name: 'Dazzy Waffroll',
+        category: 'Candies',
+        description: 'Dazzy Waffroll.',
+        MRP: 300.00,
+        price: 230.00,
+        unit: 'piece',
+        inStock: true,
+        image: '/products/candies19.jpg'
+    },
+    {
+        id: '58',
+        name: 'Labubu Mashmallow',
+        category: 'Candies',
+        description: 'Labubu mashmallow.',
+        price: 840.00,
+        unit: 'box (24 pcs)',
+        inStock: true,
+        image: '/products/candies20.jpg'
+    },
+    {
+        id: '59',
+        name: 'Waffroll Champion',
+        category: 'Candies',
+        description: 'Waffroll Champion.',
+        MRP: 300.00,
+        price: 250.00,
+        unit: 'piece',
+        inStock: true,
+        image: '/products/candies21.jpg'
+    },
+    {
+        id: '60',
+        name: 'Mashmallow Pop',
+        category: 'Candies',
+        description: 'Mashmallow pop.',
+        price: 680.00,
+        unit: 'box (36 pcs)',
+        inStock: true,
+        image: '/products/candies22.jpg'
+    }
+];

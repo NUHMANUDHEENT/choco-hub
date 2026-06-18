@@ -10,7 +10,7 @@ const CartDrawer = ({ isOpen, onClose }) => {
     if (!isOpen) return null;
 
     const handleWhatsAppCheckout = () => {
-        const phoneNumber = "+919497629260"; // Replace with company's WhatsApp number
+        const phoneNumber = "+917558959580"; // Replace with company's WhatsApp number
 
         let message = "🍫 *New Wholesale Inquiry from Choco-Hub*\n\n";
         message += "I'm interested in the following products:\n";
