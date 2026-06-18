@@ -7,7 +7,9 @@ export const useTheme = () => useContext(ThemeContext);
 export const ThemeProvider = ({ children }) => {
     const [isDarkMode, setIsDarkMode] = useState(() => {
         const savedTheme = localStorage.getItem('choco_theme');
-        return savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        if (savedTheme) return savedTheme === 'dark';
+        // Default to light theme when no preference is saved
+        return false;
     });
 
     useEffect(() => {

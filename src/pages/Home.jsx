@@ -57,7 +57,7 @@ const Home = () => {
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                        {['Chocolates', 'Toys', 'Fancy Items'].map((cat, i) => (
+                        {['Candies', 'Toys' /*, 'Fancy Items' */].map((cat, i) => (
                             <Link key={cat} to={`/products?category=${cat}`} className="relative rounded-2xl overflow-hidden aspect-[3/4] block group">
                                 <img src={[
                                     "https://www.yuvaflowers.com/cdn/shop/files/special-chocolates-in-basket-gift-hamper-manual-yuvaflowers-bestgifts-1732-default-title-42715876491544.jpg?v=1711900379",

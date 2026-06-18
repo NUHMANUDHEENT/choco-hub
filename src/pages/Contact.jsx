@@ -72,7 +72,7 @@ const Contact = () => {
 
                         <div className="flex flex-col gap-6">
                             {[
-                                { icon: <Phone size={24} />, title: 'Phone', desc: '+91 7558959580', hint: 'Mon-Fri from 8am to 6pm.' },
+                                { icon: <Phone size={24} />, title: 'Phone', desc: '+91 9497629260', hint: 'Mon-Fri from 8am to 6pm.' },
                                 { icon: <Mail size={24} />, title: 'Email', desc: 'supply@chocohub.com', hint: 'We respond within 24 hours.' },
                                 { icon: <MapPin size={24} />, title: 'Warehouse Center', desc: '123 Wholesale Market, City Name, 12345', hint: '' }
                             ].map((item, i) => (
@@ -90,7 +90,7 @@ const Contact = () => {
                         </div>
 
                         <div className="mt-10">
-                            <a href="https://wa.me/+917558959580" target="_blank" rel="noreferrer">
+                            <a href="https://wa.me/919497629260" target="_blank" rel="noreferrer">
                                 <Button variant="primary" size="lg" className="w-full sm:w-auto bg-[#25D366] text-white border-[#25D366] hover:bg-[#20bd5a]">
                                     <MessageSquare size={20} /> Chat with us on WhatsApp
                                 </Button>
@@ -150,7 +150,7 @@ const Contact = () => {
                                             id="phone"
                                             value={formData.phone}
                                             onChange={handleChange}
-                                            placeholder="+91 7558959580"
+                                            placeholder="+91 9497629260"
                                             className="w-full p-3 border border-[#e6ded8] dark:border-[#3e2615] rounded-lg bg-white dark:bg-[#1a120b] dark:text-[#f7f4ef] focus:outline-none focus:border-[#5c3a21] dark:focus:border-[#d4a373] focus:ring-4 focus:ring-[#5c3a21]/10 transition-all font-sans text-base"
                                         />
                                     </div>
